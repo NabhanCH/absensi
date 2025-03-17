@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:absensi/ui/attend/attend_screen.dart';
 import 'package:absensi/ui/absent/absent_screen.dart';
 import 'package:absensi/ui/attendance_history/attendance_history_screen.dart';
+import 'package:absensi/ui/form/form_screen.dart'; // Tambahkan layar Formulir
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,7 +36,6 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  // efect when click
                   child: InkWell(
                     highlightColor: Colors.transparent,
                     splashColor: Colors.transparent,
@@ -57,6 +57,37 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           "Attendance Record",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OrderForm(),
+                        ),
+                      );
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/ic_form.png'),
+                          height: 100,
+                          width: 100,
+                        ),
+                        Text(
+                          "Formulir",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
