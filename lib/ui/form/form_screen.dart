@@ -1,3 +1,4 @@
+import 'package:absensi/ui/order_history_screen/order_history_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,17 @@ class _OrderFormState extends State<OrderForm> {
         ),
         backgroundColor: Color.fromARGB(255, 26, 0, 143), // Warna biru tua
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.history, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OrderHistoryScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: BoxDecoration(

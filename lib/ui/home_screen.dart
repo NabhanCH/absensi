@@ -1,8 +1,9 @@
+import 'package:absensi/ui/order_history_screen/order_history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:absensi/ui/attend/attend_screen.dart';
 import 'package:absensi/ui/absent/absent_screen.dart';
 import 'package:absensi/ui/attendance_history/attendance_history_screen.dart';
-import 'package:absensi/ui/form/form_screen.dart'; // Tambahkan layar Formulir
+import 'package:absensi/ui/form/form_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,128 +37,19 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AttendScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_absen.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Attendance Record",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: _buildMenuItem(context, 'assets/images/ic_absen.png', "Attendance Record", const AttendScreen()),
                 ),
                 Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => OrderForm(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_form.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Formulir",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: _buildMenuItem(context, 'assets/images/ic_form.png', "Formulir",  OrderForm()),
                 ),
                 Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AbsentScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_leave.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Permission",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: _buildMenuItem(context, 'assets/images/ic_leave.png', "Permission", const AbsentScreen()),
                 ),
                 Expanded(
-                  child: InkWell(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AttendanceHistoryScreen(),
-                        ),
-                      );
-                    },
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/ic_history.png'),
-                          height: 100,
-                          width: 100,
-                        ),
-                        Text(
-                          "Attendance History",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: _buildMenuItem(context, 'assets/images/ic_history.png', "Attendance History", const AttendanceHistoryScreen()),
+                ),
+                Expanded(
+                  child: _buildMenuItem(context, 'assets/images/ic_history.png', "Order History",  OrderHistoryScreen()),
                 ),
               ],
             ),
@@ -179,6 +71,36 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(BuildContext context, String imagePath, String title, Widget screen) {
+    return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => screen),
+        );
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image(
+            image: AssetImage(imagePath),
+            height: 100,
+            width: 100,
+          ),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
